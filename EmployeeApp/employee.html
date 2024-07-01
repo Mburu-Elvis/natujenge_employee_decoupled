@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row detailColumn" ng-controller="EmployeeDetailsController">
+        <div class="col-md-4 details">
+            <h3>Total Messages</h3>
+            <p ng-bind="totalMessages"></p>
+        </div>
+        <div class="col-md-4 details">
+            <h3>Unread Messages</h3>
+            <p ng-bind="unreadMessages"></p>
+        </div>
+        <div class="col-md-4 details">
+            <h3>Upcoming Deadline</h3>
+            <p ng-bind="deadline"></p>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="container messages" ng-controller="MessagesController">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>From</th>
+                    <th>Messages</th>
+                    <th class="actionsHeader">
+                        <span class="status">Status</span>
+                        <span class="reply">Actions</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="message in messages | orderBy:'-from'">
+                    <td ng-bind="message.from"></td>
+                    <td ng-bind="message.message"></td>
+                    <td class="actions">
+                        <!-- <span class="status statusDetails" ng-bind="message.status"></span> 
+                        <span class="reply replyDetails">reply</span> -->
+                        <button type="button" ng-class="{btn: 'btn', 'btn-success': message.status === 'read', 'btn-danger': message.status !== 'read'}">{{ message.status }}</button>
+                        <button type="button" ng-class="{btn: 'btn', 'btn-primary': 'btn-primary'}" data-bs-toggle="modal" data-bs-target="#exampleModal">reply</button>
+            
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Send Message</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form ng-submit="sendMessage()">
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text" id="inputGroup-sizing-default">TO :</span>
+                                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" ng-model="formData.to">
+                                            </div>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text" id="inputGroup-sizing-default">Message :</span>
+                                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" ng-model="formData.message">
+                                            </div>
+                        
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Send</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="container detailColumn">
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Total Employees</h3>
+            <p>33</p>
+        </div>
+        <div class="col-md-4">
+            <h3>TotalDepartments</h3>
+            <p>4</p>
+        </div>
+    </div>
+    <div class="detailColumn">
+        <div class="row">
+           <div class="col-md-3">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Employees
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">Add Employee</a></li>
+                    <li><a class="dropdown-item" href="#">Edit Employee</a></li>
+                </ul>
+              </div>          
+           </div>
+           <div class="col-md-3"></div>
+           <div class="col-md-3">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Departments
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#">Add Departments</a></li>
+                  <li><a class="dropdown-item" href="#">Edit Departments</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+    <hr>
+    <div class="detailColumn">
+        <h3>Employee List</h3>
+
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <th>Name</th>
+                    <th>PhoneNumber</th>
+                    <th>Department</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="employee in employees">
+                        <td ng-bind="employee.email"></td>
+                        <td ng-bind="employee.phoneNumber"></td>
+                        <td ng-bind="employee.department"></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Action
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                  <li><a class="dropdown-item" href="#">Edit Details</a></li>
+                                  <li><a class="dropdown-item" href="#">Suspend</a></li>
+                                  <li><a class="dropdown-item" href="#">Delete</a></li>
+                                </ul>
+                              </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

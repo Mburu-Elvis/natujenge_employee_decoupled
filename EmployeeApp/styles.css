@@ -1,0 +1,98 @@
+.navbar1 {
+    border-radius: 5px;
+    background-color: #333;
+    height: 50px;
+    padding: 0%;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav-right {
+    float: right;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+.detailColumn {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.messages {
+    border: #333;
+    border-width: 1%;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+td {
+    max-width: 300px;
+}
+
+.actionsHeader .status, .actionsHeader .status{
+    display: inline-block;
+    min-width: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    padding: 3px 10px;
+    margin-right: 5px; 
+    border-radius: 4px; 
+}
+
+.actions .status, .actions .reply {
+    display: inline-block;
+    min-width: 80px;
+    height: 30px; 
+    line-height: 30px; 
+    text-align: center; 
+    color: white; 
+    padding: 3px 10px;  
+    margin-right: 5px;  
+    border-radius: 4px;  
+}
+
+.actions .statusDetails {
+    background-color: #4CAF50; 
+}
+
+.actions .replyDetails {
+    background-color: #2196F3;  
+}
+
+.actions button {
+    margin-right: 5px;
+    min-width: 75px;
+}
