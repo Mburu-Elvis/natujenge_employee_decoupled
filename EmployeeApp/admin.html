@@ -45,24 +45,56 @@
                 <thead>
                     <th>Name</th>
                     <th>PhoneNumber</th>
-                    <th>Department</th>
+                    <th>Email</th>
                     <th>Actions</th>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="employee in employees">
-                        <td ng-bind="employee.email"></td>
+                    <tr ng-repeat="employee in employees track by employee.id">
+                        <td ng-bind="employee.name"></td>
                         <td ng-bind="employee.phoneNumber"></td>
-                        <td ng-bind="employee.department"></td>
+                        <td ng-bind="employee.email"></td>
                         <td>
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                   Action
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                  <li><a class="dropdown-item" href="#">Edit Details</a></li>
-                                  <li><a class="dropdown-item" href="#">Suspend</a></li>
-                                  <li><a class="dropdown-item" href="#">Delete</a></li>
+                                  <li class="col-md-12">
+<!--                                      <a class="dropdown-item" href="#exampleModal" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit Details</a>-->
+                                      <button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                          Edit
+                                      </button>
+                                  </li>
+                                  <li class="col-md-12">
+<!--                                      <a class="dropdown-item" href="#">Suspend</a>-->
+                                      <button type="button" class="btn btn-primary dropdown-item">
+                                          Suspend
+                                      </button>
+                                  </li>
+                                  <li class="col-md-12">
+<!--                                      <a class="dropdown-item" href="#">Delete</a>-->
+                                      <button type="button" class="btn btn-primary dropdown-item">
+                                          Delete
+                                      </button>
+                                  </li>
                                 </ul>
+                                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit Employee</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ...
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                               </div>
                         </td>
                     </tr>

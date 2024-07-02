@@ -25,7 +25,7 @@ app.controller('MessagesController', ['$scope', '$http', function($scope, $http)
         {
             from: "+254722345678",
             message: "Reminder: Please complete your project status update by end of day.",
-            status: "unread"
+            status: "read"
         },
         {
             from: "+254712345679",
@@ -49,18 +49,26 @@ app.controller('MessagesController', ['$scope', '$http', function($scope, $http)
         }
     ]; 
 
-    $scope.sendMessage = function() {
-        console.log($scope.formData);
-        $http.post('http://127.0.0.1:8080/send-messages', $scope.formData)
-                .then(function(response) {
-                    // Handle success
-                    console.log('Form submission successful!', response.data);
-                    // Optionally reset the form
-                    $scope.formData = {};
-                }, function(error) {
-                    // Handle error
-                    console.error('Form submission failed!', error);
-                });
-        $scope.formData = {};
-    }
+    // $scope.sendMessage = function() {
+    //     console.log($scope.formData);
+    //     $http.post({
+    //         method: 'GET',
+    //         mode: "cors",
+    //         url: 'https://stallion-holy-informally.ngrok-free.app/api/v1/send-messages',
+    //         headers: {
+    //             'Access-Control-Allow-Origin': '*'
+    //             // Add other headers if needed
+    //         }
+    //         }, $scope.formData)
+    //             .then(function(response) {
+    //                 // Handle success
+    //                 console.log('Form submission successful!', response.data);
+    //                 // Optionally reset the form
+    //                 $scope.formData = {};
+    //             }, function(error) {
+    //                 // Handle error
+    //                 console.error('Form submission failed!', error);
+    //             });
+    //     $scope.formData = {};
+    // }
 }]);
