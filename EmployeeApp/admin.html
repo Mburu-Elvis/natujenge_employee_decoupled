@@ -1,44 +1,99 @@
 <div class="container detailColumn">
     <div class="row">
-        <div class="col-md-4">
-            <h3>Total Employees</h3>
-            <p>33</p>
+        <div class="col-md-6 text-center">
+            <h3>Employees Count</h3>
+            <p>{{employees.length}}</p>
         </div>
-        <div class="col-md-4">
-            <h3>TotalDepartments</h3>
+        <div class="col-md-6 text-center">
+            <h3>Department Count</h3>
             <p>4</p>
         </div>
     </div>
     <div class="detailColumn">
         <div class="row">
-           <div class="col-md-3">
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Employees
+            <div class="col-md-1"></div>
+           <div class="col-md-4">
+                <button class="btn btn-secondary" type="button" id="dropdownMenuButton1" data-bs-toggle="modal" data-bs-target="#addEmployee">
+                    Add Employee
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Add Employee</a></li>
-                    <li><a class="dropdown-item" href="#">Edit Employee</a></li>
-                </ul>
-              </div>          
+                  <div class="modal fade" id="addEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="addEmployeeModalLabel">Add Employee</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                  <form ng-submit="createEmployee()">
+                                      <div class="mb-3">
+                                          <label for="exampleFormControlInput1" class="form-label">Name</label>
+                                          <input type="text" class="form-control" id="employeeName" ng-model="employeeForm.name">
+                                      </div>
+                                      <div class="mb-3">
+                                          <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                                          <input type="email" class="form-control" id="employeeEmail" ng-model="employeeForm.email">
+                                      </div>
+                                      <div class="mb-3">
+                                          <label for="exampleFormControlInput1" class="form-label">PhoneNumber</label>
+                                          <input type="text" class="form-control" id="employeePhoneNumber" ng-model="employeeForm.phoneNumber">
+                                      </div>
+                                      <div class="mb-3">
+                                          <label for="exampleFormControlInput1" class="form-label">Password</label>
+                                          <input type="text" class="form-control" id="exampleFormControlInput1" ng-model="employeeForm.password">
+                                      </div>
+                                      <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                          <button type="submit" class="btn btn-primary"data-bs-dismiss="modal">Save changes</button>
+                                      </div>
+                                  </form>
+                              </div>
+<!--                              <div class="modal-footer">-->
+<!--                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--                                  <button type="button" class="btn btn-primary">Add</button>-->
+<!--                              </div>-->
+                          </div>
+                      </div>
+                  </div>
            </div>
-           <div class="col-md-3"></div>
-           <div class="col-md-3">
+           <div class="col-md-4"></div>
+           <div class="col-md-3 align-items-center">
             <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <button class="btn btn-secondary dropdown-toggle text-center" type="button" id="createDeptButton" data-bs-toggle="dropdown" aria-expanded="false">
                   Departments
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="#">Add Departments</a></li>
+                  <li class="col-md-12">
+<!--                      <a class="dropdown-item" href="#">Add Departments</a>-->
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          Add Department
+                      </button>
+                  </li>
                   <li><a class="dropdown-item" href="#">Edit Departments</a></li>
               </ul>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editDept">Add Department</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
           </div>
         </div>
     </div>
     <hr>
     <div class="detailColumn">
-        <h3>Employee List</h3>
+        <h3 class="text-center">Employee List</h3>
 
         <div class="container">
             <table class="table">
@@ -57,47 +112,61 @@
                         <td ng-bind="employee.password"></td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                   Action
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                   <li class="col-md-12">
 <!--                                      <a class="dropdown-item" href="#exampleModal" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit Details</a>-->
-                                      <button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                      <button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#editEmployeeModal1" ng-click="openModal(employee)">
                                           Edit
                                       </button>
                                   </li>
                                   <li class="col-md-12">
-<!--                                      <a class="dropdown-item" href="#">Suspend</a>-->
-                                      <button type="button" class="btn btn-primary dropdown-item">
-                                          Suspend
-                                      </button>
-                                  </li>
-                                  <li class="col-md-12">
 <!--                                      <a class="dropdown-item" href="#">Delete</a>-->
-                                      <button type="button" class="btn btn-primary dropdown-item">
+                                      <button type="button" class="btn btn-primary dropdown-item" ng-click="deleteEmployee(employee.id)">
                                           Delete
                                       </button>
                                   </li>
                                 </ul>
-                                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="editEmployeeModal1" tabindex="-1" aria-labelledby="editEmployeeModalLabel1" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Edit Employee</h5>
+                                                <h5 class="modal-title" id="editEmployeeTitle">Modal title</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                ...
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                                <form ng-submit="updateEmployee()">
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Name</label>
+                                                        <input type="text" class="form-control" id="editEmployeeName1" ng-model="selectedEmployee.name">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                                                        <input type="email" class="form-control" id="editEmployeeEmail1" ng-model="selectedEmployee.email" readonly>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">PhoneNumber</label>
+                                                        <input type="text" class="form-control" id="editEmployeePhoneNumber1" ng-model="selectedEmployee.phoneNumber" >
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Password</label>
+                                                        <input type="text" class="form-control" id="editPassword1" ng-model="selectedEmployee.password">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary"data-bs-dismiss="modal">Save changes</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                              </div>
+                            </div>
+                            </div>
+
+
+
                         </td>
                     </tr>
                 </tbody>

@@ -9,6 +9,14 @@ app.config(function ($routeProvider) {
             templateUrl: 'admin.html',
             controller: 'AdminController'
         })
+        .when('/Jobs', {
+            templateUrl: 'jobs.html',
+            controller: 'JobsController'
+        })
+        .when('/Client',{
+            templateUrl: 'client.html',
+            controller: 'ClientController'
+        })
         .otherwise({ redirectTo: '/'});
 
 })

@@ -1,0 +1,16 @@
+<div class="container" ng-controller="JobsController">
+    <div class="container job-container" ng-repeat="job in jobs | orderBy: '-datePosted'">
+        <p class="small date-posted">Date Posted : <span ng-bind="job.datePosted"></span></p>
+        <h2 ng-bind="job.jobTitle"></h2>
+        <p>Price : $ <span ng-bind="job.price"></span></p>
+        <div class="container">
+            <p class="" ng-bind="job.jobDescription"></p>
+            <!-- <p ng-repeat="jb in job.tags"> -->
+                <span ng-repeat="jb in job.tags">
+                    <span class="job-tags text-light air3-token" ng-bind="jb"></span>
+                </span>
+            <!-- </p> -->
+        </div>
+        <p>Proposals : <span ng-bind="job.bids"></span></p>
+    </div>
+</div>

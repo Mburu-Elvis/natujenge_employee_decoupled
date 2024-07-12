@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -17,6 +18,12 @@ public class EmployeeService {
 
     @Transactional
     public EmployeeResponseDTO createEmployee(EmployeeRequestDTO employeeRequestDTO) {
+        Employee emp = employeeRepository.findByEmail(employeeRequestDTO.getEmail());
+
+        if (emp != null ) {
+            throw new RuntimeException();
+        }
+
         Employee employee = new Employee();
         employee.setName(employeeRequestDTO.getName());
         employee.setEmail(employeeRequestDTO.getEmail());
@@ -31,6 +38,24 @@ public class EmployeeService {
         responseDTO.setPhoneNumber(savedEmployee.getPhoneNumber());
         responseDTO.setPassword(savedEmployee.getPassword());
 
+        return responseDTO;
+    }
+
+    public EmployeeResponseDTO getEmployee(Integer employeeId) {
+        Optional<Employee> employee = employeeRepository.findById(employeeId);
+
+        if (!employee.isPresent()) {
+            throw new RuntimeException();
+        }
+
+        EmployeeResponseDTO responseDTO = new EmployeeResponseDTO();
+
+        Employee emp = employee.get();
+        responseDTO.setId(emp.getId());
+        responseDTO.setName(emp.getName());
+        responseDTO.setEmail(emp.getEmail());
+        responseDTO.setPhoneNumber(emp.getPhoneNumber());
+        responseDTO.setPassword(emp.getPassword());
         return responseDTO;
     }
 
@@ -61,12 +86,16 @@ public class EmployeeService {
         return responseDTO;
     }
 
-    public void deleteEmployee(EmployeeRequestDTO employeeRequestDTO) {
-        Employee employee = employeeRepository.findByEmail(employeeRequestDTO.getEmail());
+    public String deleteEmployee(Integer employeeId) {
+        Optional<Employee> employee = employeeRepository.findById(employeeId);
         if (employee == null) {
-            throw new RuntimeException("Employee not found with email: " + employeeRequestDTO.getEmail());
+            throw new RuntimeException("Employee not found with id: " + employeeId);
         }
 
-        employeeRepository.delete(employee);
+        Employee emp = employee.get();
+
+        employeeRepository.delete(emp);
+
+        return "Employee with id : " + employeeId.toString() + " deleted";
     }
 }

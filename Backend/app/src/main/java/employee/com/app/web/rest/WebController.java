@@ -4,9 +4,14 @@ import employee.com.app.domain.Employee;
 import employee.com.app.service.EmployeeService;
 import employee.com.app.service.dto.EmployeeRequestDTO;
 import employee.com.app.service.dto.EmployeeResponseDTO;
+import org.apache.tomcat.util.http.HeaderUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -21,6 +26,14 @@ public class WebController {
         return employeeService.createEmployee(employeeRequestDTO);
     }
 
+    @GetMapping(path = "/employees/{employeeId}")
+    public EmployeeResponseDTO getEmployee(@PathVariable Integer employeeId) {
+        System.out.println("Received Id: " + employeeId);
+
+        return employeeService.getEmployee(employeeId);
+    }
+
+
     @GetMapping(path="/employees")
     public ResponseEntity<Iterable<Employee>> getAllEmployees() {
         Iterable<Employee> employees = employeeService.getAllEmployees();
@@ -34,10 +47,13 @@ public class WebController {
         return employeeService.updateEmployee(employeeRequestDTO);
     }
 
-    @DeleteMapping(path="/employees")
-    public EmployeeRequestDTO deleteEmployee(@RequestBody EmployeeRequestDTO employeeRequestDTO) {
-        System.out.println("Deleting employee with email: " + employeeRequestDTO.getEmail());
-        employeeService.deleteEmployee(employeeRequestDTO);
-        return employeeRequestDTO;
+    @DeleteMapping(path="/employees/{employeeId}")
+    public ResponseEntity<?> deleteEmployee(@PathVariable Integer employeeId) {
+        System.out.println("Deleting employee with id: " +  employeeId);
+        String res = employeeService.deleteEmployee(employeeId);
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", res);
+        response.put("code", "200");
+        return ResponseEntity.ok(response);
     }
 }

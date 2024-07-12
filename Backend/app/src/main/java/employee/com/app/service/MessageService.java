@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import employee.com.app.domain.Messages;
 import employee.com.app.repository.MessageRepository;
 import employee.com.app.service.dto.MessageRequestDTO;
 import employee.com.app.service.dto.MessageResponseDTO;
@@ -63,7 +64,19 @@ public class MessageService {
                 })
                 .block(); // Block to wait for the response
 
+        Messages msg = new Messages();
+        msg.setMessageTo(messageRequestDTO.getNumber());
+        msg.setMessageBody(messageRequestDTO.getMessage());
+        msg.setMessageFrom("TIARACONNECT");
+        msg.setDeliveryStatus(messageResponseDTO.getStatus());
+
+        Messages savedMsg = messageRepository.save(msg);
+
         return messageResponseDTO;
+    }
+
+    public Iterable<Messages> getMessages() {
+        return messageRepository.findAll();
     }
 
 
