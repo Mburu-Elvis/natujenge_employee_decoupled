@@ -49,6 +49,7 @@ li a:hover {
 .table {
     width: 100%;
     border-collapse: collapse;
+    border-width: 2px;
 }
 
 .table th, .table td {

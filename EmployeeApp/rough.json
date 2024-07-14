@@ -3,4 +3,7 @@
   "pageable":{"pageNumber":0,"pageSize":2,"sort":{"sorted":false,"empty":true,"unsorted":true},"offset":0,"paged":true,"unpaged":false},
   "size":2,
   "content":[{"id":254,"name":"Samuel Kamochu","email":"samuel@gmail.com","phoneNumber":"0745091145","password":"@samuel"},{"id":403,"name":"Feiz","email":"feiz@gmail.com","phoneNumber":"0701888380","password":"feiz"}],
-  "number":0,"sort":{"sorted":false,"empty":true,"unsorted":true},"numberOfElements":2,"first":true,"last":false,"empty":false}
+  "number":0,
+  "sort":{"sorted":false,"empty":true,"unsorted":true},
+  "numberOfElements":2,
+  "first":true,"last":false,"empty":false}

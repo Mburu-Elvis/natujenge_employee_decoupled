@@ -17,11 +17,11 @@ app.controller('EmployeeDetailsController', ['$scope', '$http', function($scope,
                     url: 'https://stallion-holy-informally.ngrok-free.app/api/v1/messages',
                 }).then(function(response) {
                     // Success callback
-                    console.log('Employees:', response);
+                    console.log('Messages:', response.data);
                     $scope.formData = {};
                 }, function(error) {
                     // Error callback
-                    console.error('Error fetching employees:', error);
+                    console.error('Error fetching messages:', error);
                     $scope.formData = {};
                 });
     };
@@ -62,7 +62,7 @@ app.controller('MessagesController', ['$scope', '$http', function($scope, $http)
                 url: 'https://stallion-holy-informally.ngrok-free.app/api/v1/messages',
             }).then(function(response) {
                 // Success callback
-                console.log('Employees:', response);
+                console.log('Messages:', response.data);
                 $scope.formData = {};
             }, function(error) {
                 // Error callback

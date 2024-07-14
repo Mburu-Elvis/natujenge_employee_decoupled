@@ -2,93 +2,48 @@
     <div class="row">
         <div class="col-md-6 text-center">
             <h3>Employees Count</h3>
-            <p>{{employees.length}}</p>
+            <p>{{totalElements}}</p>
         </div>
-        <div class="col-md-6 text-center">
-            <h3>Department Count</h3>
-            <p>4</p>
-        </div>
-    </div>
-    <div class="detailColumn">
-        <div class="row">
-            <div class="col-md-1"></div>
-           <div class="col-md-4">
+        <div class="col-md-6">
+            <div class="d-flex justify-content-center">
                 <button class="btn btn-secondary" type="button" id="dropdownMenuButton1" data-bs-toggle="modal" data-bs-target="#addEmployee">
                     Add Employee
                 </button>
-                  <div class="modal fade" id="addEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <h5 class="modal-title" id="addEmployeeModalLabel">Add Employee</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">
-                                  <form ng-submit="createEmployee()">
-                                      <div class="mb-3">
-                                          <label for="exampleFormControlInput1" class="form-label">Name</label>
-                                          <input type="text" class="form-control" id="employeeName" ng-model="employeeForm.name">
-                                      </div>
-                                      <div class="mb-3">
-                                          <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                                          <input type="email" class="form-control" id="employeeEmail" ng-model="employeeForm.email">
-                                      </div>
-                                      <div class="mb-3">
-                                          <label for="exampleFormControlInput1" class="form-label">PhoneNumber</label>
-                                          <input type="text" class="form-control" id="employeePhoneNumber" ng-model="employeeForm.phoneNumber">
-                                      </div>
-                                      <div class="mb-3">
-                                          <label for="exampleFormControlInput1" class="form-label">Password</label>
-                                          <input type="text" class="form-control" id="exampleFormControlInput1" ng-model="employeeForm.password">
-                                      </div>
-                                      <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                          <button type="submit" class="btn btn-primary"data-bs-dismiss="modal">Save changes</button>
-                                      </div>
-                                  </form>
-                              </div>
-<!--                              <div class="modal-footer">-->
-<!--                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-<!--                                  <button type="button" class="btn btn-primary">Add</button>-->
-<!--                              </div>-->
-                          </div>
-                      </div>
-                  </div>
-           </div>
-           <div class="col-md-4"></div>
-           <div class="col-md-3 align-items-center">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle text-center" type="button" id="createDeptButton" data-bs-toggle="dropdown" aria-expanded="false">
-                  Departments
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li class="col-md-12">
-<!--                      <a class="dropdown-item" href="#">Add Departments</a>-->
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                          Add Department
-                      </button>
-                  </li>
-                  <li><a class="dropdown-item" href="#">Edit Departments</a></li>
-              </ul>
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="addEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="editDept">Add Department</h5>
+                                <h5 class="modal-title" id="addEmployeeModalLabel">Add Employee</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <form ng-submit="createEmployee()">
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="employeeName" ng-model="employeeForm.name">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                                        <input type="email" class="form-control" id="employeeEmail" ng-model="employeeForm.email">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">PhoneNumber</label>
+                                        <input type="text" class="form-control" id="employeePhoneNumber" ng-model="employeeForm.phoneNumber">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Password</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" ng-model="employeeForm.password">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary"data-bs-dismiss="modal">Save changes</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-          </div>
         </div>
     </div>
     <hr>
@@ -105,7 +60,7 @@
                     <th>Actions</th>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="employee in employees track by employee.id">
+                    <tr ng-repeat="employee in employees | orderBy : 'name'">
                         <td ng-bind="employee.name"></td>
                         <td ng-bind="employee.phoneNumber"></td>
                         <td ng-bind="employee.email"></td>
@@ -172,15 +127,20 @@
                 </tbody>
             </table>
             <nav aria-label="Page navigation example">
+                <p class="d-flex justify-content-center">Showing <span class="px-1" ng-bind="startElem"> </span> - <span class="px-1" ng-bind="lastElem"></span>elements</p>
                 <ul class="pagination justify-content-center">
-                    <li ng-class="{page-item: 'page-item', disabled: pageNumber === 0}"> <!--class="page-item disabled" -->
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    <li ng-class="{'page-item': 'page-item', 'disabled': pageNumber === 0}" class="page-item disabled"> <!--class="page-item disabled" -->
+                        <a class="page-link" tabindex="-1" aria-disabled="true" ng-click="changePage(pageNumber-1)">Previous</a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#" ng-bind="pageNumber"></a></li>
-<!--                    <li class="page-item"><a class="page-link" href="#">2</a></li>-->
-<!--                    <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-                    <li class="page-item">
-                        <a class="page-link" href="#" ng-bind="pageNumber + 1"></a>
+                    <li class="page-item active"><a class="page-link" ng-bind="pageNumber" ng-click="changePage(pageNumber)"></a></li>
+                    <li c ng-class="{'page-item': true, 'disabled': pageNumber+1 >= pages}" class="page-item">
+                        <a class="page-link" ng-bind="pageNumber+1" ng-click="changePage(pageNumber+1)"></a>
+                    </li>
+                    <li  ng-class="{'page-item': true, 'disabled': pageNumber+2 >= pages}" class="page-item">
+                        <a class="page-link" ng-bind="pageNumber+2" ng-click="changePage(pageNumber+2)"></a>
+                    </li>
+                    <li ng-class="{'page-item': true, 'disabled': pageNumber === pages - 1}">
+                        <a ng-click="changePage(pageNumber+1)" class="page-link">Next</a>
                     </li>
                 </ul>
             </nav>

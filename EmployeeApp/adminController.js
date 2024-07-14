@@ -1,23 +1,37 @@
 app.controller('AdminController', ['$scope', '$http', '$route', function($scope, $http, $route) {
     $scope.employeeForm={};
+    $scope.pageNumber = 0;
      $scope.openModal = function(employee) {
           $scope.selectedEmployee = angular.copy(employee); // Create a copy of the employee to edit
      };
-    $http({
-        method: 'GET',
-        headers: {
-                    'ngrok-skip-browser-warning': 'hello'
-                },
-        url: 'https://stallion-holy-informally.ngrok-free.app/api/v1/employees/pagination',
-    }).then(function(response) {
-        $scope.pageNumber = response.data.pageable.pageNumber;
-        $scope.employees = response.data.content;
-        console.log("Page", $scope.pageNumber);
-        console.log('Employees:', $scope.employees.content);
-    }, function(error) {
-        // Error callback
-        console.error('Error fetching employees:', error);
-    });
+   $scope.getEmployees = function() {
+       $http({
+               method: 'GET',
+               headers: {
+                           'ngrok-skip-browser-warning': 'hello'
+                       },
+               url: 'https://stallion-holy-informally.ngrok-free.app/api/v1/employees/pagination?pageNo='+ $scope.pageNumber,
+           }).then(function(response) {
+               $scope.pageNumber = response.data.pageable.pageNumber;
+               $scope.employees = response.data.content;
+               $scope.pages = response.data.totalPages;
+               $scope.numberOfElements = response.data.numberOfElements;
+               if ($scope.numberOfElements !== 0) {
+                   if ($scope.pageNumber === 0) {
+                        $scope.startElem = 1;
+                   } else {
+                        $scope.startElem = ($scope.pageNumber) * 5 + 1;
+                   }
+                   $scope.lastElem = $scope.startElem + response.data.numberOfElements - 1;
+               }
+               $scope.totalElements = response.data.totalElements;
+           }, function(error) {
+               // Error callback
+               console.error('Error fetching employees:', error);
+      });
+   };
+
+   $scope.getEmployees();
 
     $scope.createEmployee = function() {
         $http({
@@ -88,5 +102,10 @@ app.controller('AdminController', ['$scope', '$http', '$route', function($scope,
     $scope.refreshEmployees = function() {
         $route.reload();
         console.log("Refresh clicked");
-    }
+    };
+
+    $scope.changePage = function(pageNumber) {
+       $scope.pageNumber = pageNumber;
+       $scope.getEmployees()
+    };
 }]);

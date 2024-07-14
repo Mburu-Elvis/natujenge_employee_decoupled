@@ -59,7 +59,7 @@ public class WebController {
     }
 
     @GetMapping(path="/employees/pagination")
-    public ResponseEntity<Page<Employee>> getEmployees(@RequestParam(defaultValue = "0") int pageNo, @RequestParam(defaultValue = "2") int pageSize) {
+    public ResponseEntity<Page<Employee>> getEmployees(@RequestParam(defaultValue = "0") int pageNo, @RequestParam(defaultValue = "5") int pageSize) {
         Page<Employee> employees = employeeService.getEmployees(pageNo, pageSize);
         return  ResponseEntity.ok(employees);
     }
