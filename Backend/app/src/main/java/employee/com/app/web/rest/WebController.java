@@ -6,6 +6,7 @@ import employee.com.app.service.dto.EmployeeRequestDTO;
 import employee.com.app.service.dto.EmployeeResponseDTO;
 import org.apache.tomcat.util.http.HeaderUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,5 +56,11 @@ public class WebController {
         response.put("message", res);
         response.put("code", "200");
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping(path="/employees/pagination")
+    public ResponseEntity<Page<Employee>> getEmployees(@RequestParam(defaultValue = "0") int pageNo, @RequestParam(defaultValue = "2") int pageSize) {
+        Page<Employee> employees = employeeService.getEmployees(pageNo, pageSize);
+        return  ResponseEntity.ok(employees);
     }
 }

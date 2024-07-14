@@ -6,6 +6,9 @@ import employee.com.app.service.dto.EmployeeRequestDTO;
 import employee.com.app.service.dto.EmployeeResponseDTO;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -60,9 +63,9 @@ public class EmployeeService {
     }
 
     public Iterable<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+        Iterable<Employee> all = employeeRepository.findAll();
+        return all;
     }
-
 
     @Transactional
     public EmployeeResponseDTO updateEmployee(EmployeeRequestDTO employeeRequestDTO) {
@@ -97,5 +100,10 @@ public class EmployeeService {
         employeeRepository.delete(emp);
 
         return "Employee with id : " + employeeId.toString() + " deleted";
+    }
+
+    public Page<Employee> getEmployees(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        return employeeRepository.findAll(pageable);
     }
 }

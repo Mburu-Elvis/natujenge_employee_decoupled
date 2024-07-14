@@ -9,7 +9,7 @@
     margin-bottom: 30px;
 }
 
-ul {
+.navbar1 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -92,9 +92,9 @@ td {
     background-color: #2196F3;  
 }
 
-.actions button {
+.actions button, .actions-header {
     margin-right: 5px;
-    min-width: 75px;
+    min-width: 100px;
 }
 
 .job-container {
@@ -121,4 +121,36 @@ td {
     padding: 3px 15px;
     border-radius: 10px;
     color: white;
+}
+
+ul.job-titles-list {
+    list-style: none;
+}
+
+ul.job-titles-list {
+    position: relative;
+}
+
+ul.job-titles-list li::before{
+    content: '•';
+    color: black;
+    font-size: 1.5em;
+    position: absolute;
+    left:0;
+}
+.job-posting {
+    height: 500px;
+}
+
+.carousel {
+    background-color: gray;
+    height: 100%;
+
+}
+
+.carousel-inner {
+    height:100%;
+}
+.carousel-caption {
+    height: 300px;
 }

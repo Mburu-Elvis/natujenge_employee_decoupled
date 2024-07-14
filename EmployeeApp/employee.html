@@ -50,20 +50,20 @@
                     <th>From</th>
                     <th>Messages</th>
                     <th class="actionsHeader">
-                        <span class="status">Status</span>
-                        <span class="reply">Actions</span>
+                        <span class="status actions-header">Status</span>
+                        <span class="reply actions-header ms-5">Actions</span>
                     </th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="message in messages | orderBy:'-from'">
-                    <td ng-bind="message.messageFrom"></td>
+                    <td ng-bind="message.messageTo"></td>
                     <td ng-bind="message.messageBody"></td>
                     <td class="actions">
                         <!-- <span class="status statusDetails" ng-bind="message.status"></span> 
                         <span class="reply replyDetails">reply</span> -->
                         <button type="button" ng-class="{btn: 'btn', 'btn-success': message.deliveryStatus === 'SUCCESS', 'btn-danger': message.deliveryStatus !== 'SUCCESS'}">{{ message.deliveryStatus }}</button>
-                        <button type="button" ng-class="{btn: 'btn', 'btn-primary': 'btn-primary'}" data-bs-toggle="modal" data-bs-target="#exampleModal" ng-click="replyMessage(message.messageFrom)">reply</button>
+                        <button type="button" ng-class="{btn: 'btn', 'btn-primary': 'btn-primary'}" data-bs-toggle="modal" data-bs-target="#exampleModal" ng-click="replyMessage(message.messageTo)">reply</button>
             
 
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

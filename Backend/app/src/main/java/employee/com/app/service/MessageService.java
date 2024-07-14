@@ -33,7 +33,7 @@ public class MessageService {
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type", "application/json");
-        headers.set("Authorization", "");
+        headers.set("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzNjEiLCJvaWQiOjM2MSwidWlkIjoiZTZlMjBhNjQtMGNiMy00NWVmLWI3NTEtNjlkMWJjOTdiMDI0IiwiYXBpZCI6MzI2LCJpYXQiOjE3MTkxODE1NTAsImV4cCI6MjA1OTE4MTU1MH0.O_oZah_evCS4QH2ANlDx2A8UL8o83rvFhidrrQ7TFcZIEwBPTiwpHCxuGcXxDu4cKBpAveI7msYB5LdcPwKUlw");
 
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("to", phoneNumber);
@@ -67,10 +67,12 @@ public class MessageService {
         Messages msg = new Messages();
         msg.setMessageTo(messageRequestDTO.getNumber());
         msg.setMessageBody(messageRequestDTO.getMessage());
-        msg.setMessageFrom("TIARACONNECT");
+        msg.setMessageFrom("TIARACONECT");
         msg.setDeliveryStatus(messageResponseDTO.getStatus());
 
         Messages savedMsg = messageRepository.save(msg);
+
+        System.out.println(messageResponseDTO.toString());
 
         return messageResponseDTO;
     }

@@ -45,6 +45,7 @@ app.controller('MessagesController', ['$scope', '$http', function($scope, $http)
         url:  'https://stallion-holy-informally.ngrok-free.app/api/v1/messages',
     }).then(function(response) {
         $scope.messages = response.data;
+        console.log($scope.messages);
     }, function(error) {
         console.error("Error fetching employees: ", error);
     });

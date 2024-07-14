@@ -1,4 +1,4 @@
-<div class="container detailColumn">
+<div class="container detailColumn" ng-controller="AdminController">
     <div class="row">
         <div class="col-md-6 text-center">
             <h3>Employees Count</h3>
@@ -94,7 +94,7 @@
     <hr>
     <div class="detailColumn">
         <h3 class="text-center">Employee List</h3>
-
+        <button class="btn btn-primary" ng-click="refreshEmployees()">Refresh Data</button>
         <div class="container">
             <table class="table">
                 <thead>
@@ -133,7 +133,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="editEmployeeTitle">Modal title</h5>
+                                                <h5 class="modal-title" id="editEmployeeTitle">Edit Employee Details</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
@@ -171,6 +171,19 @@
                     </tr>
                 </tbody>
             </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li ng-class="{page-item: 'page-item', disabled: pageNumber === 0}"> <!--class="page-item disabled" -->
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#" ng-bind="pageNumber"></a></li>
+<!--                    <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+<!--                    <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+                    <li class="page-item">
+                        <a class="page-link" href="#" ng-bind="pageNumber + 1"></a>
+                    </li>
+                </ul>
+            </nav>
         </div>
 
     </div>
