@@ -155,3 +155,23 @@ ul.job-titles-list li::before{
 .carousel-caption {
     height: 300px;
 }
+
+
+.signup-form {
+    width: 400px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: rgba(248, 248, 248, 0.98);
+    border-size: 1px;
+}
+
+
+.signup-button {
+    width: 80%;
+}
+
+.container-detail .container .row {
+    height: 600px;
+    padding: 20px;
+}
