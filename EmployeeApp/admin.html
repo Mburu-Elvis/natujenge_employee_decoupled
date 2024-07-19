@@ -32,11 +32,11 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">Password</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" ng-model="employeeForm.password">
+                                        <input type="password" class="form-control" id="exampleFormControlInput1" ng-model="employeeForm.password">
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary"data-bs-dismiss="modal">Save changes</button>
+                                        <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary"data-bs-dismiss="modal">Add</button>
                                     </div>
                                 </form>
                             </div>
@@ -86,7 +86,7 @@
                                   </li>
                                   <li class="col-md-12">
 <!--                                      <a class="dropdown-item" href="#">Delete</a>-->
-                                      <button type="button" class="btn btn-primary dropdown-item" ng-click="deleteEmployee(employee.id)">
+                                      <button type="button" class="btn btn-secondary dropdown-item" ng-click="deleteEmployee(employee.id)">
                                           Delete
                                       </button>
                                   </li>
@@ -114,11 +114,11 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="exampleFormControlInput1" class="form-label">Password</label>
-                                                        <input type="text" class="form-control" id="editPassword1" ng-model="selectedEmployee.password">
+                                                        <input type="password" class="form-control" id="editPassword1" ng-model="selectedEmployee.password">
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary"data-bs-dismiss="modal">Save changes</button>
+                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary"data-bs-dismiss="modal">Save</button>
                                                     </div>
                                                 </form>
                                             </div>
