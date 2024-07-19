@@ -46,10 +46,12 @@ app.controller('AdminController', ['$scope', '$http', '$route', function($scope,
             // Success callback
             console.log('Employees:', response);
             $scope.refreshEmployees();
+	    $scope.employeeForm = {};
         }, function(error) {
             // Error callback
             console.error('Error fetching employees:', error);
             $scope.refreshEmployees();
+	    $scope.employeeForm = {};
         });
     };
 
@@ -66,10 +68,12 @@ app.controller('AdminController', ['$scope', '$http', '$route', function($scope,
             // Success callback
             console.log('Employees:', response);
             $scope.refreshEmployees();
+	    //$scope.employeeForm{};
         }, function(error) {
             // Error callback
             console.error('Error fetching employees:', error);
             $scope.refreshEmployees();
+	    //$scope.employeeForm{};
         });
     };
 
