@@ -48,6 +48,7 @@ public class EmployeeService {
         Optional<Employee> employee = employeeRepository.findById(employeeId);
 
         if (!employee.isPresent()) {
+            System.out.println("The Employee does not Exist");
             throw new RuntimeException();
         }
 
@@ -81,6 +82,7 @@ public class EmployeeService {
         Employee savedEmployee = employeeRepository.save(employee);
 
         EmployeeResponseDTO responseDTO = new EmployeeResponseDTO();
+        responseDTO.setId(savedEmployee.getId());
         responseDTO.setName(savedEmployee.getName());
         responseDTO.setPhoneNumber(savedEmployee.getPhoneNumber());
         responseDTO.setEmail(savedEmployee.getEmail());
